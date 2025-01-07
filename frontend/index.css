@@ -1,0 +1,64 @@
+* {
+    background-color: lightslategray;
+}
+#header {
+    background-color: slategray;
+    padding: 5px;
+    display: flex;
+}
+#header a {
+    background-color: slategray;
+    margin-left: 25px;
+    line-height: 30px;
+    color: lightgray;
+    text-decoration: none;
+    font-family: "Oswald", serif;
+    font-size: 15pt;
+    transition-duration: 0.5s;
+}
+#header a:hover {
+    font-size: 17pt;
+}
+#sectia {
+    margin-top: 20px;
+    text-align: center;
+}
+#sectia h1 {
+    color: lightgray;
+    font-family: "Roboto Slab", serif;
+}
+#imageProgramming {
+    width: 400px;
+    background-color: slategray;
+    border-radius: 20px;
+    overflow: hidden;
+}
+#icon {
+    background-color: slategray;
+    width: 30px;
+}
+.code_box {
+    margin-top: 30px;
+    font-size: 0;
+    padding: 30px;
+    background-color: dimgray; /* Пример фона для контейнера */
+    border-radius: 5px; /* Скругленные углы (по желанию) */
+}
+.code_box code {
+    background-color: dimgray;
+    font-size: 14px;
+    font-family: "JetBrains Mono", serif;
+    display: inline; /* Установка inline отображения для элементов code */
+}
+.console {
+    color: blue; /* Пример цвета для текста "console" */
+}
+.bracket {
+    color: darkseagreen;
+}
+.string {
+    color: lightpink; /* Пример цвета для строк */
+}
+.text {
+    color: black; /* Пример цвета для текста */
+}
