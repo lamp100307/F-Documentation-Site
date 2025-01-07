@@ -1,17 +1,22 @@
-__all__ = ('API_BOT', 'logger', 'Database', 'Question', 'Answer', 'db', 'main_keyboard')
+__all__ = ('API_BOT', 'logger', 'Question', 'Answer', 'db', 'main_keyboard')
 
+import asyncio
 from sys import stdout, exit
 
 from environs import *
 from loguru import logger
-from classes import *
-from keyboards import main_keyboard
-
-db = Database()
+from backend.classes import *
+from backend.keyboards import main_keyboard
 
 env = Env()
-
 env.read_env()
+
+db = Database()
+async def init_db() -> Database:
+    await db.restart_db()
+    return db
+
+asyncio.ensure_future(init_db())
 
 try:
     API_BOT = env.str('API_BOT')
@@ -32,7 +37,7 @@ logger.add(
 )
 logger.add(
         format=log_format,
-        sink='..//temp//log.log',
+        sink='temp//log.log',
         level='INFO',
         mode='w',
 )

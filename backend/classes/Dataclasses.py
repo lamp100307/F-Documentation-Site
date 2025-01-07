@@ -1,4 +1,4 @@
-__all__ = ['Question', 'Answer']
+__all__ = ('Question', 'Answer')
 
 from pydantic import BaseModel
 class Question(BaseModel):

@@ -1,4 +1,3 @@
-import asyncio
 from sqlite3 import IntegrityError
 from typing import Optional
 
@@ -6,26 +5,24 @@ import aiosqlite
 
 class Database:
     def __init__(self):
-        self.path = '../temp/Database.db'
-        self.restart_db()
+        self.path = 'temp/Database.db'
 
-    def restart_db(self):
-        async def call_to_db():
-            async with aiosqlite.connect(self.path) as db:
-                await db.executescript('''
-                    CREATE TABLE IF NOT EXISTS users (
-                        id INTEGER NOT NULL PRIMARY KEY,
-                        send BOOLEAN NOT NULL,
-                        counter INTEGER DEFAULT 0
-                    );
-                    CREATE TABLE IF NOT EXISTS questions (
-                        id INTEGER PRIMARY KEY AUTOINCREMENT,
-                        name TEXT NOT NULL,
-                        text TEXT NOT NULL
-                    )
-                ''')
-                await db.commit()
-        asyncio.run(call_to_db())
+    async def restart_db(self):
+        async with aiosqlite.connect(self.path) as db:
+            await db.executescript('''
+                CREATE TABLE IF NOT EXISTS users (
+                    id INTEGER NOT NULL PRIMARY KEY,
+                    send BOOLEAN NOT NULL,
+                    counter INTEGER DEFAULT 0
+                );
+                CREATE TABLE IF NOT EXISTS questions (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    name TEXT NOT NULL,
+                    text TEXT NOT NULL
+                )
+            ''')
+            await db.commit()
+
 
     @property
     async def users(self) -> list[Optional[dict[int, bool]]]:

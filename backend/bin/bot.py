@@ -3,7 +3,7 @@ __all__ = ('send_question', 'run_bot')
 from aiogram import Bot, Dispatcher, types, F
 from aiogram.filters import Command
 
-from bin import API_BOT, db, main_keyboard, logger
+from . import API_BOT, db, main_keyboard, logger
 
 bot = Bot(API_BOT)
 dp = Dispatcher()

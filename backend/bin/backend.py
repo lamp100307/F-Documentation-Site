@@ -3,9 +3,7 @@ from fastapi import FastAPI, Body
 
 from fastapi.middleware.cors import CORSMiddleware
 
-from bin import Question, Answer
-from bin import db, bot
-
+from backend.bin import Question, Answer, db, bot
 app = FastAPI()
 
 app.add_middleware(
@@ -15,9 +13,6 @@ app.add_middleware(
     allow_methods=["*"],  # Разрешаем все методы (GET, POST и т.д.)
     allow_headers=["*"],  # Разрешаем все заголовки
 )
-@app.get("/")
-async def read_root():
-    return {"message": "Welcome to the FastAPI application"}
 
 @app.post("/submit", response_model=Answer)
 async def submit_question(payload: Question = Body(...)):

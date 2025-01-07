@@ -1,7 +1,7 @@
 import asyncio
 
-from bin.bot import run_bot
-from bin.backend import run_backend
+from backend.bin.bot import run_bot
+from backend.bin.backend import run_backend
 
 async def main():
     await asyncio.gather(run_bot(), run_backend())
